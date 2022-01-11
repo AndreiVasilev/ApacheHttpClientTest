@@ -1,0 +1,25 @@
+<Configuration>
+    <Appenders>
+        <Console name="STDOUT">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </Console>
+        <File name="LogFile" fileName="output.log">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+        <Async name="Async">
+            <AppenderRef ref="LogFile"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.apache.hc.client5.http" level="DEBUG">
+            <AppenderRef ref="Async"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="STDOUT" />
+        </Root>
+    </Loggers>
+</Configuration>
